@@ -1,11 +1,11 @@
-const models = require('../models')
-const { validationResult } = require('express-validator')
-const moment = require('moment')
+import models from '../models'
+import { validationResult } from 'express-validator'
+import moment from 'moment'
 
 const Restaurant = models.Restaurant
 const Order = models.order
 
-exports.deliver = async function (req, res) {
+deliver = async (req, res) => {
   // the err from validation result
   const err = validationResult(req)
   if (err.errors.length>0) {
@@ -47,3 +47,5 @@ exports.deliver = async function (req, res) {
 }
 }
 }
+
+export { deliver }

@@ -1,6 +1,6 @@
-const models = require('../models')
-const { validationResult } = require('express-validator')
-const moment = require('moment')
+import models from '../models'
+import { validationResult } from 'express-validator'
+import moment from 'moment'
 
 const Restaurant = models.Restaurant
 const Order = models.order
@@ -18,7 +18,7 @@ const Order = models.order
       OrderController.deliver)
 */
 
-exports.deliver = async function (req, res) {
+deliver = async (req, res) => {
   try {
     const order = await Order.findByPk(req.params.orderId)
     order.deliveredAt = new Date()
@@ -30,8 +30,10 @@ exports.deliver = async function (req, res) {
   }
 }
 
-async function updateRestaurantServiceTime (restaurantId) {
+updateRestaurantServiceTime = async (restaurantId) => {
   const restaurant = await Restaurant.findByPk(restaurantId)
   const averageServiceTime = await restaurant.getAverageServiceTime()
   await Restaurant.update({ averageServiceMinutes: averageServiceTime }, { where: { id: restaurantId } })
 }
+
+export { deliver }

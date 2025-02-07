@@ -3,6 +3,7 @@ const customer1 = {
   lastName: 'Doe',
   email: 'customer1@customer.com',
   birthDate: new Date('9/15/1990'), // september 15th
+  // No usamos arrow functions porque this no estaría disponible
   fullName: function () {
     return this.firstName + ' ' + this.lastName
   },
@@ -35,7 +36,7 @@ function isCustomerValidV1 (customer) {
 console.log(isCustomerValidV1(customer1))
 
 
-function isCustomerValidV2 (customer) {
+const isCustomerValidV2 = (customer) => {
   return customer.age() > 18
 }
 
@@ -45,7 +46,7 @@ console.log(isCustomerValidV2(customer1))
 
 // This is a conditional ternary operator
 // Here it is used for argument checking
-function isCustomerValidV3 (customer) {
+const isCustomerValidV3 = (customer) => {
   return customer ? customer.age() > 18 : false 
 } 
 
@@ -78,7 +79,7 @@ console.log(`${customer2.fullName()} email is ${customer2.email} and is valid = 
 
 // console.log(`${customer1.fullName()} email is ${customer1.email} and is valid = ${isCustomerEmailValidV1()}`) //undefined
 
-function isCustomerEmailValidV2 (customer) {
+const isCustomerEmailValidV2 = (customer) => {
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   return customer ? re.test(customer.email.toLowerCase()) : false
 }
@@ -146,7 +147,7 @@ const customer4 = {
   },
 }
 
-function isCustomerIdValidV1 (customer) {
+const isCustomerIdValidV1 = (customer) => {
   const re = /^([0-9]{4})$/
   // operator '?' to check undefined. Notice that is diferent to ternary operator
   return customer?.id ? re.test(customer.id) : false 

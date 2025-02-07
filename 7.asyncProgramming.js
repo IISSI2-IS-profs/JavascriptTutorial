@@ -13,7 +13,7 @@ const customer1 = {
   }
 }
 
-function greetCustomer (customer) {
+const greetCustomer = (customer) => {
   console.log(`Welcome1 ${customer.fullName()}`)
 }
 console.log('Before timeout1')
@@ -29,7 +29,7 @@ console.log('Before timeout2')
 setTimeout(customer => console.log(`Welcome2 ${customer.fullName()}`), 5000, customer1)
 console.log('After timeout2')
 
-const fs = require('fs') // importing module
+import fs from 'fs'
 
 // Block I/O.
 const data = fs.readFileSync('file.txt') // blocks here until file is read
@@ -72,7 +72,7 @@ async function noPromise () {
 noPromise()
 
 // Other example
-const axios = require('axios')
+import axios from 'axios'
 const usersEndpointUrl = 'https://jsonplaceholder.typicode.com/users'
 
 // First version with promises

@@ -21,4 +21,6 @@ const getUserById = async (id) => {
   }
 }
 
-export {getUsers, getUserById}
+const apiModuleObject = { getUsers, getUserById }
+export default apiModuleObject
+
